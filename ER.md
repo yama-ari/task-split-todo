@@ -1,2 +1,2 @@
 ## 📌 Gyazoリンク
-[![Image from Gyazo](https://i.gyazo.com/b7aad3cef04fee6cc4a8e95aaca9d99a.png)](https://gyazo.com/b7aad3cef04fee6cc4a8e95aaca9d99a)
+[![Image from Gyazo](https://i.gyazo.com/22d993e495fe041e6559523c41ee614c.png)](https://gyazo.com/22d993e495fe041e6559523c41ee614c)
