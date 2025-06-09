@@ -2,9 +2,6 @@ require_relative "boot"
 
 require "rails/all"
 
-# 追加（solid_cableを無効化）
-Rails.autoloaders.main.ignore(Rails.root.join("app/models/solid_cable"))
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
