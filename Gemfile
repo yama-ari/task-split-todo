@@ -58,3 +58,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "slim-rails"
+gem "devise"
+gem "devise-i18n"
