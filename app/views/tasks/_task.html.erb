@@ -1,0 +1,38 @@
+<div id="<%= dom_id task %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1"><%= t("activerecord.attributes.task.title") %></strong>
+    <%= task.title %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1"><%= t("activerecord.attributes.task.memo") %></strong>
+    <%= task.memo %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1"><%= t("activerecord.attributes.task.estimated_time") %>:</strong>
+    <%= task.estimated_time %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1"><%= Task.human_attribute_name(:is_done) %>:</strong>
+    <%= task.is_done_i18n %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1"><%= t("activerecord.attributes.task.recurrence_interval") %>:</strong>
+    <%= task.recurrence_interval %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1"><%= t("activerecord.attributes.task.priority_level") %>:</strong>
+    <%= task.priority_level %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1"><%= t("activerecord.attributes.task.user") %>:</strong>
+    <%= task.user_id %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1"><%= t("activerecord.attributes.task.parent_task") %>:</strong>
+    <%= task.parent_task_id %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1"><%= t("activerecord.attributes.task.position") %>:</strong>
+    <%= task.position %>
+  </p>
+</div>

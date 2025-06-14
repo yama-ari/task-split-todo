@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      task:
+        is_done: 状態
+        is_done_values:
+          not_started: 未着手
+          closed: 完了

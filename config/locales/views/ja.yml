@@ -1,0 +1,48 @@
+#参考
+ja:
+  views:
+    tasks:
+      back_to_tasks: タスク一覧に戻る
+      new_task: 新規タスク
+      show_this_task: タスク詳細
+  helpers:
+    submit:
+      create: 登録
+      submit: 保存
+      update: 更新
+    label:
+      email: メールアドレス
+      password: パスワード
+  user_sessions:
+    new:
+      title: ログイン
+      login: ログイン
+      to_register_page: 登録ページへ
+      password_forget: パスワードをお忘れの方はこちら
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ
+  header:
+    login: ログイン
+    logout: ログアウト
+    board: 掲示板
+    board_index: 掲示板一覧
+    create_board: 掲示板作成
+    bookmark_index: ブックマーク一覧
+    profile: プロフィール
+  activerecord:
+    attributes:
+      task:
+        title: タイトル
+        memo: メモ
+        estimated_time: 見積時間
+        is_done: 状態
+        recurrence_interval: 繰り返し間隔
+        priority_level: 優先度
+        user: ユーザー
+        parent_task: 親タスク
+        position: 並び順
+        is_done_values:
+          not_started: 未着手
+          closed: 完了
