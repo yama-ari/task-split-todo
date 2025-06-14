@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_10_041333) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_14_012229) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_catalog.plpgsql"
+  enable_extension "plpgsql"
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "title"
+    t.text "memo"
+    t.integer "estimated_time"
+    t.integer "is_done"
+    t.string "recurrence_interval"
+    t.integer "priority_level"
+    t.integer "user_id"
+    t.integer "parent_task_id"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      task: タスク
+    attributes:
+      task:
+        title: タイトル
+        memo: メモ
+        is_done: 状態
+        estimated_time: 所要時間
+        recurrence_interval: 繰り返し期間
+        priority_level: 優先順位
+        user_id: ユーザーID
+        parent_task_id: 親タスクID
+        position: 並び順
