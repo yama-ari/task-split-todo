@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.order(:position)
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -54,6 +54,26 @@ class TasksController < ApplicationController
       format.html { redirect_to tasks_path, status: :see_other, notice: "Task was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def move_higher
+  Task.find(params[:id]).move_higher # viewで選択したtaskを一つ上の並び順に変更する
+  redirect_to tasks_path
+  end
+ 
+  def move_lower
+    Task.find(params[:id]).move_lower # viewで選択したtaskを一つ下の並び順に変更する
+    redirect_to tasks_path
+  end
+
+  def move_to_top
+    Task.find(params[:id]).move_to_top
+    redirect_to tasks_path
+  end
+
+  def move_to_bottom
+    Task.find(params[:id]).move_to_bottom
+    redirect_to tasks_path
   end
 
   private

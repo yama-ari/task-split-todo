@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  acts_as_list
   enum is_done: { not_started: 0, closed: 1 }
 
   belongs_to :user

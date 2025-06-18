@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  resources :tasks
+  resources :tasks do
+    member do
+      get :move_higher
+      get :move_lower
+      get :move_to_top
+      get :move_to_bottom
+    end
+  end
+  
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
