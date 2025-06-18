@@ -76,6 +76,12 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def split
+    @task = current_user.tasks.find(params[:id])
+  end
+
+  def split_create; end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task

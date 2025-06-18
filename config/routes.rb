@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       get :move_lower
       get :move_to_top
       get :move_to_bottom
+      get :split
+      post :split_create
     end
   end
   

@@ -1,0 +1,11 @@
+<% content_for :title, "Split task" %>
+
+<div class="md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">Split task</h1>
+
+  <%= @task.title %>
+
+  
+
+  <%= link_to t("views.tasks.back_to_tasks"), tasks_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+</div>

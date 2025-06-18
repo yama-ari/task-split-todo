@@ -20,6 +20,7 @@
           <%= link_to "↓", move_lower_task_path(task) %>
           <%= link_to "最上位", move_to_top_task_path(task) %>
           <%= link_to "最下位", move_to_bottom_task_path(task) %>
+          <%= link_to "分割", split_task_path(task), class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
         </p>
       <% end %>
     <% else %>
