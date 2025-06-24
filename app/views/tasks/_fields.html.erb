@@ -1,0 +1,39 @@
+  <div class="my-5">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": form.object.errors[:title].none?, "border-red-400 focus:outline-red-600": form.object.errors[:title].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :memo %>
+    <%= form.text_area :memo, rows: 4, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": form.object.errors[:memo].none?, "border-red-400 focus:outline-red-600": form.object.errors[:memo].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :estimated_time %>
+    <%= form.number_field :estimated_time, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": form.object.errors[:estimated_time].none?, "border-red-400 focus:outline-red-600": form.object.errors[:estimated_time].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :is_done %>
+    <%= form.select :is_done, Task.is_dones.keys, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": form.object.errors[:is_done].none?, "border-red-400 focus:outline-red-600": form.object.errors[:is_done].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :recurrence_interval %>
+    <%= form.hidden_field :recurrence_interval, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": form.object.errors[:recurrence_interval].none?, "border-red-400 focus:outline-red-600": form.object.errors[:recurrence_interval].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :priority_level %>
+    <%= form.hidden_field :priority_level, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": form.object.errors[:priority_level].none?, "border-red-400 focus:outline-red-600": form.object.errors[:priority_level].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :parent_task_id %>
+    <%= form.hidden_field :parent_task_id, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": form.object.errors[:parent_task_id].none?, "border-red-400 focus:outline-red-600": form.object.errors[:parent_task_id].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :position %>
+    <%= form.hidden_field :position, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": form.object.errors[:position].none?, "border-red-400 focus:outline-red-600": form.object.errors[:position].any?}] %>
+  </div>

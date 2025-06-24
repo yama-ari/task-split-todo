@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = current_user.tasks.order(:position)
+    @tasks = current_user.tasks.where(is_done: :not_started).order(:position)
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -24,6 +24,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
+        @task.insert_at(1)
         format.html { redirect_to @task, notice: "Task was successfully created." }
         format.json { render :show, status: :created, location: @task }
       else
@@ -57,8 +58,8 @@ class TasksController < ApplicationController
   end
 
   def move_higher
-  Task.find(params[:id]).move_higher # viewで選択したtaskを一つ上の並び順に変更する
-  redirect_to tasks_path
+    Task.find(params[:id]).move_higher # viewで選択したtaskを一つ上の並び順に変更する
+    redirect_to tasks_path
   end
  
   def move_lower
@@ -77,10 +78,38 @@ class TasksController < ApplicationController
   end
 
   def split
-    @task = current_user.tasks.find(params[:id])
+    @parent_task = current_user.tasks.find(params[:id])
+    @child_tasks = Array.new(3) { current_user.tasks.build(parent_task_id: @parent_task.id) }
   end
 
-  def split_create; end
+  def split_create
+    task_params_array = params.dig(:tasks, :tasks) || []
+    @parent_task = current_user.tasks.find(params[:id])
+    parent_position = @parent_task.position
+
+    @parent_task.update(is_done: :splited)
+
+    current_user.tasks.where("position > ?", parent_position).update_all("position = position + #{task_params_array.size}")
+
+    task_params_array.each_with_index do |param, index|
+      permitted = param.permit(:title, :memo, :estimated_time, :is_done, :recurrence_interval, :priority_level, :parent_task_id, :position)
+      task = current_user.tasks.create(permitted.merge(position: parent_position + index))
+      unless task.save
+        Rails.logger.warn "タスク保存に失敗しました: #{task.errors.full_messages.join(", ")}"
+      end
+    end
+
+    redirect_to tasks_path, notice: "タスクを分割して登録しました"
+  end
+
+  def update_status
+    @task = current_user.tasks.find(params[:id])
+    if @task.update(is_done: params[:task][:is_done])
+      redirect_to tasks_path, notice: "ステータスを更新しました"
+    else
+      redirect_to tasks_path, alert: "ステータス更新に失敗しました"
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
