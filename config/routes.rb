@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       get :move_to_bottom
       get :split
       post :split_create
+      post :split_dispatch
+      post :split_with_ai
       patch :update_status
     end
   end

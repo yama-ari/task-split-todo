@@ -71,3 +71,4 @@ gem "tailwindcss-ruby", "3.4.17"
 gem 'rails-i18n', '~> 7.0.0'
 gem "enum_help"
 gem 'acts_as_list'
+gem "ruby-openai"
