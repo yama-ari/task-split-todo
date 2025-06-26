@@ -12,7 +12,9 @@
     <%= form.label :estimated_time %>
     <%= form.number_field :estimated_time, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": form.object.errors[:estimated_time].none?, "border-red-400 focus:outline-red-600": form.object.errors[:estimated_time].any?}] %>
   </div>
-
+<%
+=begin
+%>
   <div class="my-5">
     <%= form.label :is_done %>
     <%= form.select :is_done, Task.is_dones.keys, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": form.object.errors[:is_done].none?, "border-red-400 focus:outline-red-600": form.object.errors[:is_done].any?}] %>
@@ -37,3 +39,6 @@
     <%= form.label :position %>
     <%= form.hidden_field :position, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": form.object.errors[:position].none?, "border-red-400 focus:outline-red-600": form.object.errors[:position].any?}] %>
   </div>
+<%
+=end
+%>

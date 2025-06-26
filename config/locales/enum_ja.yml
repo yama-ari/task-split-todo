@@ -6,3 +6,4 @@ ja:
         is_done_values:
           not_started: 未着手
           closed: 完了
+          splited: "分割済"

@@ -125,6 +125,8 @@ ja:
         sign_in: ログイン
         sign_in_with_provider: "%{provider}でログイン"
         sign_up: アカウント登録
+        logout: ログアウト
+        edit_account: ユーザー情報
       minimum_password_length:
         other: "（%{count}字以上）"
     unlocks:

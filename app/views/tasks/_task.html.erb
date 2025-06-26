@@ -9,14 +9,19 @@
   </p>
   <p class="my-5">
     <strong class="block font-medium mb-1"><%= t("activerecord.attributes.task.estimated_time") %>:</strong>
-    <%= task.estimated_time %>
+    <%= task.estimated_time.present? ? "#{task.estimated_time}分" : "未設定" %>
   </p>
   <%= form_with model: task, url: update_status_task_path(task), method: :patch, local: true do |f| %>
     <div class="my-5">
-      <%= f.select :is_done, Task.is_dones.keys, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": f.object.errors[:is_done].none?, "border-red-400 focus:outline-red-600": f.object.errors[:is_done].any?}] %>
-      <%= f.submit "変更" %>
+      <%= button_to "完了にする", update_status_task_path(task), method: :patch, params: { task: { is_done: "closed" } },
+        class: "rounded-md px-3 py-2 bg-green-500 text-white hover:bg-green-600" %>
+      <%= link_to "分割", split_task_path(task), class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+
     </div>
   <% end %>
+<%
+=begin
+%>
   <p class="my-5">
     <strong class="block font-medium mb-1"><%= t("activerecord.attributes.task.recurrence_interval") %>:</strong>
     <%= task.recurrence_interval %>
@@ -37,4 +42,7 @@
     <strong class="block font-medium mb-1"><%= t("activerecord.attributes.task.position") %>:</strong>
     <%= task.position %>
   </p>
+<%
+=end
+%>
 </div>

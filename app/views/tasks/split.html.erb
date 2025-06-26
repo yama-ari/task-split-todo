@@ -14,8 +14,8 @@
     <% end %>
 
     <div class="flex gap-4 my-5">
-      <%= form.submit "AIで空欄を補完", name: "commit", value: "ai", class: "rounded-md px-3.5 py-2.5 bg-green-600 hover:bg-green-500 text-white font-medium" %>
-      <%= form.submit "分割タスクを登録", name: "commit", value: "register", class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium" %>
+      <%= form.button t("views.tasks.complete_with_ai"), name: "commit", value: "ai", type: "submit", class: "rounded-md px-3.5 py-2.5 bg-green-600 hover:bg-green-500 text-white font-medium" %>
+      <%= form.button t("views.tasks.register_split_tasks"), name: "commit", value: "register", type: "submit", class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium" %>
     </div>
   <% end %>
 

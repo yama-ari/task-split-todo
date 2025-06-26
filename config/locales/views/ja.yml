@@ -5,6 +5,10 @@ ja:
       back_to_tasks: タスク一覧に戻る
       new_task: 新規タスク
       show_this_task: タスク詳細
+      edit_this_task: タスクを編集する
+      destroy_this_task: タスクを削除する
+      complete_with_ai: AIで空欄を補完
+      register_split_tasks: 分割タスクを登録
   helpers:
     submit:
       create: 登録
