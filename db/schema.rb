@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_06_14_012229) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_26_041641) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_14_012229) do
     t.string "title"
     t.text "memo"
     t.integer "estimated_time"
-    t.integer "is_done"
+    t.integer "is_done", default: 0
     t.string "recurrence_interval"
     t.integer "priority_level"
     t.integer "user_id"
