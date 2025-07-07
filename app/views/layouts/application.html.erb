@@ -35,9 +35,12 @@
         <%= alert %>
       </p>
     <% end %>
-    
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+    <div class="flex min-h-screen">
+      <%= render "layouts/sidebar" %>
+      <main class="flex flex-col flex-1">
+        <%= render "layouts/header" %>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

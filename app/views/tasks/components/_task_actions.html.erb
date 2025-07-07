@@ -1,0 +1,26 @@
+  <% reorder_buttons = [
+  ["優先度を一つ上げる", "chevron-up", move_higher_task_path(task)],
+  ["優先度を一つ下げる", "chevron-down", move_lower_task_path(task)],
+  ["最優先にする", "arrow-up", move_to_top_task_path(task)],
+  ["最下位にする", "arrow-down", move_to_bottom_task_path(task)],
+] %>
+
+<div class="flex justify-between items-center mt-2 group">
+  <!-- タスク分割ボタン -->
+  <div class="tooltip" data-tip="タスクを分割">
+    <%= link_to split_task_path(task),
+        class: "btn btn-ghost btn-sm text-gray-500 hover:text-blue-600" do %>
+      <%= heroicon("scissors", variant: :outline, options: { class: "w-5 h-5" }) %>
+    <% end %>
+  </div>
+
+  <% reorder_buttons.each do |label, icon_name, path| %>
+    <div class="tooltip" data-tip="<%= label %>">
+      <%= link_to path,
+          class: "btn btn-xs btn-outline opacity-0 group-hover:opacity-100 transition-opacity duration-200" do %>
+        <%= heroicon(icon_name, variant: :outline, options: { class: "w-4 h-4" }) %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+

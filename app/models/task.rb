@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   acts_as_list scope: [:user_id, :is_done]
+  scope :done, -> { where(is_done: "closed") }
   enum is_done: { not_started: 0, closed: 1 , splited: 2 }
 
   belongs_to :user

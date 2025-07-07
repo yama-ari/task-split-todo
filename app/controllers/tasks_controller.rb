@@ -3,6 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = current_user.tasks.where(is_done: :not_started).order(:position)
+    @done_tasks_by_date = current_user.tasks.where(is_done: :closed).where.not(done_at: nil).order(done_at: :desc).group_by { |task| task.done_at.to_date }
   end
 
   def show; end
@@ -97,12 +98,20 @@ class TasksController < ApplicationController
 
   def update_status
     @task = current_user.tasks.find(params[:id])
-    if @task.update(is_done: params[:task][:is_done])
+
+    if params[:task][:is_done] == "closed"
+      success = @task.update(is_done: :closed, done_at: Time.current)
+    else
+      success = @task.update(is_done: :not_started, done_at: nil)
+    end
+
+    if success
       redirect_to tasks_path, notice: "ステータスを更新しました"
     else
       redirect_to tasks_path, alert: "ステータス更新に失敗しました"
     end
   end
+
 
   def split_with_ai
     @parent_task = current_user.tasks.find(params[:id])

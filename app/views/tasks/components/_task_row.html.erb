@@ -1,0 +1,6 @@
+<div id="<%= dom_id task %>" class="group flex justify-between items-start gap-4">
+  <div class="flex items-start gap-2 group-hover:bg-gray-50 p-2 rounded">
+    <%= render partial: "tasks/components/task_body", locals: { task: task } %>
+    <%= render partial: "tasks/components/task_actions", locals: { task: task } %>
+  </div>
+</div>

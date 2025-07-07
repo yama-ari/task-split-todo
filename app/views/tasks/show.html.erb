@@ -7,7 +7,10 @@
 
   <h1 class="font-bold text-4xl">Showing task</h1>
 
-  <%= render @task %>
+  <p><strong>タイトル:</strong> <%= @task.title %></p>
+  <p><strong>メモ:</strong> <%= @task.memo %></p>
+  <p><strong>所要時間:</strong> <%= @task.estimated_time %> 分</p>
+
 
   <%= link_to t("views.tasks.edit_this_task"), edit_task_path(@task), class: "mt-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
   <%= link_to t("views.tasks.back_to_tasks"), tasks_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>

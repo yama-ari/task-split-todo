@@ -1,0 +1,11 @@
+    <% if notice %>
+      <p class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 px-4 py-3 rounded-md shadow-md border border-green-300 bg-green-100 text-green-800 text-sm font-medium max-w-md text-center">
+        <%= notice %>
+      </p>
+    <% end %>
+
+    <% if alert %>
+      <p class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 px-4 py-3 rounded-md shadow-md border border-red-300 bg-red-100 text-red-800 text-sm font-medium max-w-md text-center">
+        <%= alert %>
+      </p>
+    <% end %>

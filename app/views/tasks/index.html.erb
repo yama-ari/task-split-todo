@@ -1,33 +1,31 @@
 <% content_for :title, "Tasks" %>
 
-<div class="w-full">
+<div>
+
+  <%# 通知メッセージ %>
   <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+    <p id="notice" class="mb-5 inline-block rounded-md bg-green-50 px-3 py-2 text-green-500 font-medium">
+      <%= notice %>
+    </p>
   <% end %>
 
-  <div class="flex justify-between items-center mb-4">
-  <h1 class="font-bold text-4xl">タスク</h1>
-  <div class="flex gap-2">
-    <%= link_to t("views.tasks.new_task"), new_task_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium" %>
-    <%= link_to t("devise.shared.links.edit_account"), edit_user_registration_path, class: "rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 text-gray-800 font-medium" %>
-    <%= button_to t("devise.shared.links.logout"), destroy_user_session_path, method: :delete, class: "rounded-md px-3.5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-medium" %>
+  <%# タイトルと操作ボタン %>
+  <div class="">
+    <div class="">
+      <%= link_to t("views.tasks.new_task"), new_task_path, class: "btn btn-primary" %>
+      <%= link_to t("devise.shared.links.edit_account"), edit_user_registration_path, class: "btn btn-neutral" %>
+      <%= button_to t("devise.shared.links.logout"), destroy_user_session_path, method: :delete, class: "btn btn-error" %>
+    </div>
   </div>
-</div>
 
-  <div id="tasks" class="min-w-full">
+  <%# タスクリスト %>
+  <div id="tasks" class="flex flex-col gap-4 mt-6 mb-10 mx-auto max-w-3xl">
     <% if @tasks.any? %>
       <% @tasks.each do |task| %>
-        <%= render task %>
-        <p>
-          <%= link_to t("views.tasks.show_this_task"), task, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-          <%= link_to "↑上へ", move_higher_task_path(task), class: "text-sm px-2 py-1 bg-gray-200 rounded hover:bg-gray-300" %>
-          <%= link_to "↓下へ", move_lower_task_path(task), class: "text-sm px-2 py-1 bg-gray-200 rounded hover:bg-gray-300" %>
-          <%= link_to "最上位へ", move_to_top_task_path(task), class: "text-sm px-2 py-1 bg-gray-200 rounded hover:bg-gray-300" %>
-          <%= link_to "最下位へ", move_to_bottom_task_path(task), class: "text-sm px-2 py-1 bg-gray-200 rounded hover:bg-gray-300" %>
-        </p>
+        <%= render partial: "tasks/components/task_row", locals: { task: task } %>
       <% end %>
     <% else %>
-      <p class="text-center my-10">No tasks found.</p>
+      <p class="my-10 text-center text-gray-500">No tasks found.</p>
     <% end %>
   </div>
 </div>

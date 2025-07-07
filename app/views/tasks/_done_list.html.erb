@@ -1,0 +1,17 @@
+<% (@done_tasks_by_date || {}).each do |date, tasks| %>
+  <div class="mb-6 p-4">
+    <%# 日付タイトル（セクションヘッダー） %>
+    <div class="text-base font-semibold text-gray-500 mb-2 border-b pb-1">
+      <%= l(date, format: "%-m月%-d日に達成したタスク") %>
+    </div>
+
+   <%# タスクリスト：大きめ文字＋余白 %>
+    <ul class="space-y-1 ps-4 list-disc">
+      <% tasks.each do |task| %>
+        <li class="text-gray-800">
+          <%= task.title %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

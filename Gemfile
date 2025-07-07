@@ -72,3 +72,4 @@ gem 'rails-i18n', '~> 7.0.0'
 gem "enum_help"
 gem 'acts_as_list'
 gem "ruby-openai"
+gem 'heroicon'

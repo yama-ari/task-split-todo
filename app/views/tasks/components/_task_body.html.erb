@@ -1,0 +1,26 @@
+<div class="flex items-start gap-3 group">
+  <!-- ✅ チェックボタン（ホバーで表示） -->
+  <%= form_with url: update_status_task_path(task), method: :patch, local: true do %>
+    <%= hidden_field_tag "task[is_done]", "closed" %>
+    <button type="submit"
+            class="mt-2 text-gray-400 hover:text-green-600 transition group-hover:opacity-100 opacity-0 tooltip"
+            data-tip="完了にする">
+      <span class="inline-block w-4 h-4 text-xl relative">
+        <span class="absolute inset-0 transition-opacity duration-200 opacity-0 group-hover:opacity-100">□</span>
+      </span>
+    </button>
+  <% end %>
+
+  <!-- ✅ 本文 -->
+  <div class="flex-1 min-w-[200px] max-w-[600px]">
+    <p class="text-base font-semibold text-gray-800"><%= task.title %></p>
+
+    <% if task.memo.present? %>
+      <p class="text-sm text-gray-600 mt-1"><%= task.memo %></p>
+    <% end %>
+
+    <% if task.estimated_time.present? %>
+      <p class="text-xs text-gray-400 mt-1"><%= "#{task.estimated_time}分" %></p>
+    <% end %>
+  </div>
+</div>
