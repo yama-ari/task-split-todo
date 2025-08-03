@@ -1,0 +1,9 @@
+<div id="tasks" class="flex flex-col gap-4 mt-6 mb-10 mx-auto max-w-3xl">
+  <% if tasks.any? %>
+    <% tasks.each do |task| %>
+      <%= render partial: "tasks/components/task_row", locals: { task: task } %>
+    <% end %>
+  <% else %>
+    <p class="my-10 text-center text-gray-500">No tasks found.</p>
+  <% end %>
+</div>

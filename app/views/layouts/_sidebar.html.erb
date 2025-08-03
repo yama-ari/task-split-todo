@@ -1,6 +1,8 @@
 <aside class="w-96 bg-gray-100 border-r overflow-y-auto">
-    <div class="h-16 flex items-center justify-center border-b font-bold">
+    <div class="h-16 flex items-center justify-center font-bold">
     Skill Tree
     </div>
-    <%= render "tasks/done_list", tasks: @done_tasks %>
+    <%= turbo_frame_tag "done_list" do %>
+        <%= render "tasks/done_list", done_tasks_by_date: @done_tasks_by_date %>
+    <% end %>
 </aside>

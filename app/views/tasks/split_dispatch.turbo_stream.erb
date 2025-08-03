@@ -1,0 +1,9 @@
+<%= turbo_stream.replace(dom_id(@parent_task)) do %>
+  <%= render partial: "tasks/components/task_row", locals: { task: @parent_task } %>
+<% end %>
+
+<% @child_tasks.each do |child| %>
+  <%= turbo_stream.append("tasks") do %>
+    <%= render partial: "tasks/components/task_row", locals: { task: child } %>
+  <% end %>
+<% end %>

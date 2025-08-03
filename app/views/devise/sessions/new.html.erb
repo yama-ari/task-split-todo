@@ -1,5 +1,5 @@
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-4 w-full max-w-md mx-auto" }) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-4 w-full max-w-md mx-auto", data: { turbo: false } }) do |f| %>
 <h2 class="text-2xl font-bold mb-6 text-center"><%= t('.sign_in') %></h2>
   <div class="field">
     <%= f.label :email, class: "block font-medium" %>

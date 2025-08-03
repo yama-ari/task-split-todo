@@ -1,0 +1,5 @@
+<%= turbo_stream.replace "tasks" do %>
+  <%= render partial: "tasks/task_list", locals: {
+    tasks: current_user.tasks.where(is_done: :not_started).order(:position)
+  } %>
+<% end %>

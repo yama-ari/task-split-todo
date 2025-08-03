@@ -1,6 +1,6 @@
 <div class="flex items-start gap-3 group">
   <!-- ✅ チェックボタン（ホバーで表示） -->
-  <%= form_with url: update_status_task_path(task), method: :patch, local: true do %>
+  <%= form_with url: update_status_task_path(task), method: :patch, data: { turbo: false } do %>
     <%= hidden_field_tag "task[is_done]", "closed" %>
     <button type="submit"
             class="mt-2 text-gray-400 hover:text-green-600 transition group-hover:opacity-100 opacity-0 tooltip"
@@ -17,10 +17,14 @@
 
     <% if task.memo.present? %>
       <p class="text-sm text-gray-600 mt-1"><%= task.memo %></p>
+    <% else %>
+      <p class="text-sm text-gray-600 mt-1 invisible"></p>
     <% end %>
 
     <% if task.estimated_time.present? %>
       <p class="text-xs text-gray-400 mt-1"><%= "#{task.estimated_time}分" %></p>
+    <% else %>
+      <p class="text-sm text-gray-600 mt-1 invisible"></p>
     <% end %>
   </div>
 </div>

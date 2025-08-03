@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       post :split_dispatch
       post :split_with_ai
       patch :update_status
+      patch :reorder
     end
   end
   

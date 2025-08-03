@@ -1,0 +1,27 @@
+<%# 編集用フォームを表示させるためのturbo %>
+<%= turbo_frame_tag dom_id(task) do %>
+  <%= form_with model: task, local: false, html: { class: "flex items-start gap-4" } do |form| %>
+    <% if task.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+        <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+        <ul class="list-disc ml-6">
+          <% task.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= render partial: "fields", locals: { form: form } %>
+
+    <div class="pt-7">
+      <%= form.submit(task.persisted? ? "更新" : "登録", class: "btn btn-primary") %>
+      <% if task.persisted? %>
+        <%= link_to "キャンセル", task_path(task), 
+              data: { turbo_frame: dom_id(task) },
+              class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

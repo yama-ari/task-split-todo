@@ -1,16 +1,21 @@
-  <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": form.object.errors[:title].none?, "border-red-400 focus:outline-red-600": form.object.errors[:title].any?}] %>
-  </div>
+<div class="flex-1 min-w-[200px] max-w-[600px] space-y-3 text-sm">
+    <!-- タイトル -->
+    <div>
+      <%= form.label :title, class: "block text-sm text-gray-700" %>
+      <%= form.text_field :title, class: "w-full border border-gray-300 rounded-md px-3 py-2 shadow-sm focus:outline-blue-500" %>
+    </div>
 
-  <div class="my-5">
-    <%= form.label :memo %>
-    <%= form.text_area :memo, rows: 4, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": form.object.errors[:memo].none?, "border-red-400 focus:outline-red-600": form.object.errors[:memo].any?}] %>
-  </div>
+    <!-- メモ -->
+    <div>
+      <%= form.label :memo, class: "block text-sm text-gray-700" %>
+      <%= form.text_area :memo, rows: 2, class: "w-full border border-gray-300 rounded-md px-3 py-2 shadow-sm focus:outline-blue-500" %>
+    </div>
 
-  <div class="my-5">
-    <%= form.label :estimated_time %>
-    <%= form.number_field :estimated_time, class: ["block shadow rounded-md border outline-none px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": form.object.errors[:estimated_time].none?, "border-red-400 focus:outline-red-600": form.object.errors[:estimated_time].any?}] %>
+    <!-- 見積もり時間 -->
+    <div>
+      <%= form.label :estimated_time, "見積もり時間（分）", class: "block text-sm text-gray-700" %>
+      <%= form.number_field :estimated_time, class: "w-32 border border-gray-300 rounded-md px-3 py-2 shadow-sm focus:outline-blue-500" %>
+    </div>
   </div>
 <%
 =begin
