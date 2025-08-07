@@ -19,11 +19,20 @@
         <ul
             tabindex="0"
             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+            <% if current_user&.line_login_user? == false %>
             <li>
             <%= link_to t("devise.shared.links.edit_account"), edit_user_registration_path%>
             </li>
+            <% end %>
             <li><a>Settings(実装中)</a></li>
             <li><%= button_to t("devise.shared.links.logout"), destroy_user_session_path, method: :delete%></li>
+            <% if current_user&.line_login_user? %>
+            <li>
+                <%= button_to t('.cancel_my_account'), registration_path(:user),
+                method: :delete,
+                data: { confirm: t('.are_you_sure'), turbo_confirm: t('.are_you_sure') } %>
+            </li>
+            <% end %>
         </ul>
         </div>
     </div>

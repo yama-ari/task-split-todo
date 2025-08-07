@@ -33,5 +33,8 @@ Rails.application.routes.draw do
   # root "posts#index"
   
   root to: "tasks#index"
-  devise_for :users
+  devise_for :users, controllers: {
+  omniauth_callbacks: "omniauth_callbacks"
+}
+
 end

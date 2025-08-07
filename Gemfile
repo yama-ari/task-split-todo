@@ -66,6 +66,9 @@ gem "devise-i18n"
 gem 'devise-i18n-views'
 gem 'letter_opener'
 gem 'dotenv-rails'
+gem 'omniauth'
+gem 'omniauth-line'
+gem 'omniauth-rails_csrf_protection'
 gem "tailwindcss-rails"
 gem "tailwindcss-ruby", "3.4.17"
 gem 'rails-i18n', '~> 7.0.0'
