@@ -14,6 +14,7 @@ ja:
       create: 登録
       submit: 保存
       update: 更新
+      back: 戻る
     label:
       email: メールアドレス
       password: パスワード

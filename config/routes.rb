@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "terms", to: "pages#terms", as: :terms
+  get "privacy", to: "pages#privacy", as: :privacy
   resources :tasks do
     member do
       get :move_higher

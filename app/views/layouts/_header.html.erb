@@ -1,7 +1,11 @@
 <div class="navbar bg-base-100 shadow-sm">
     <div class="navbar-start"></div>
     <div class="navbar-center">
-    <a class="text-xl"><%= Date.current.strftime("%Y年%m月%d日") %></a>
+        <% if user_signed_in? %>
+            <a class="text-xl"><%= Date.current.strftime("%Y年%m月%d日") %></a>
+        <% else %>
+            <div class="text-xl">Task split todo</div>
+        <% end %>
     </div>
     <div class="navbar-end">
         <div class="tooltip tooltip-bottom" data-tip="通知機能は未実装です">

@@ -1,8 +1,15 @@
-<aside class="w-96 bg-gray-100 border-r overflow-y-auto">
+<aside class="w-96 bg-gray-100 border-r flex flex-col">
     <div class="h-16 flex items-center justify-center font-bold">
-    Skill Tree
+        Skill Tree
     </div>
-    <%= turbo_frame_tag "done_list" do %>
-        <%= render "tasks/done_list", done_tasks_by_date: @done_tasks_by_date %>
-    <% end %>
+    <div class="flex-1 overflow-y-auto">
+        <%= turbo_frame_tag "done_list" do %>
+            <%= render "tasks/done_list", done_tasks_by_date: @done_tasks_by_date %>
+        <% end %>
+    </div>
+    <div class="h-12 flex items-center justify-center border-t text-sm text-gray-600 gap-4">
+        <%= link_to "利用規約", terms_path, class: "text-sm underline" %>
+        <%= link_to "プライバシーポリシー", privacy_path, class: "text-sm underline" %>
+    </div>
+
 </aside>

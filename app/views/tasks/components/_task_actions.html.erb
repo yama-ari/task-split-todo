@@ -5,34 +5,34 @@
   ["最下位にする", "arrow-down", "bottom"],
 ] %>
 
-<div class="flex justify-between items-center mt-2 group">
-  <!-- タスク分割ボタン -->
-  <div class="tooltip" data-tip="タスクを分割">
-    <%= link_to split_task_path(task), data: { turbo_frame: dom_id(task) },
-        class: "btn btn-ghost btn-sm text-gray-500 hover:text-blue-600" do %>
-      <%= heroicon("scissors", variant: :outline, options: { class: "w-5 h-5" }) %>
-    <% end %>
-  </div>
-
-
-  <div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-    <div class="tooltip" data-tip="編集">
-      <%= link_to edit_task_path(task), data: { turbo_frame: dom_id(task) },
+<div class="flex justify-end items-center mt-2 w-full">
+  <div class="flex gap-2 w-[220px] justify-end items-center">
+    <!-- タスク分割ボタン（常時表示） -->
+    <div class="tooltip opacity-100" data-tip="タスクを分割">
+      <%= link_to split_task_path(task), data: { turbo_frame: dom_id(task) },
           class: "btn btn-ghost btn-sm text-gray-500 hover:text-blue-600" do %>
-        <%= heroicon("pencil-square", variant: :outline, options: { class: "w-5 h-5" }) %>
+        <%= heroicon("scissors", variant: :outline, options: { class: "w-5 h-5" }) %>
       <% end %>
     </div>
-    <% reorder_buttons.each do |label, icon_name, direction| %>
-      <div class="tooltip" data-tip="<%= label %>">
-        <%= button_to reorder_task_path(task, direction: direction),
-            method: :patch,
-            data: { turbo_stream: true },
-            form_class: "inline",
-            class: "btn btn-xs btn-outline" do %>
-          <%= heroicon(icon_name, variant: :outline, options: { class: "w-4 h-4" }) %>
+    <!-- 編集・並び替えボタン（ホバー時のみ表示） -->
+    <div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+      <div class="tooltip" data-tip="編集">
+        <%= link_to edit_task_path(task), data: { turbo_frame: dom_id(task) },
+            class: "btn btn-ghost btn-sm text-gray-500 hover:text-blue-600" do %>
+          <%= heroicon("pencil-square", variant: :outline, options: { class: "w-5 h-5" }) %>
         <% end %>
       </div>
-    <% end %>
+      <% reorder_buttons.each do |label, icon_name, direction| %>
+        <div class="tooltip" data-tip="<%= label %>">
+          <%= button_to reorder_task_path(task, direction: direction),
+              method: :patch,
+              data: { turbo_stream: true },
+              form_class: "inline",
+              class: "btn btn-xs btn-outline" do %>
+            <%= heroicon(icon_name, variant: :outline, options: { class: "w-4 h-4" }) %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-
