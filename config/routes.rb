@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "dashboard", to: "pages#dashboard", as: :dashboard
   get "terms", to: "pages#terms", as: :terms
   get "privacy", to: "pages#privacy", as: :privacy
   resources :tasks do

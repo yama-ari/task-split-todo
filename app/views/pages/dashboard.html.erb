@@ -1,0 +1,27 @@
+<% @weeks_grouped_by_month.each do |month, weeks| %>
+  <div class="mb-4">
+    <div class="text-sm font-bold text-gray-600 mb-2">
+      <%= month.strftime("%Y年%m月") %>
+    </div>
+
+    <% weeks.each do |week| %>
+      <div class="flex space-x-2 mb-2">
+        <% week.each do |day| %>
+          <% activity = @activities_by_date[day] %>
+          <% wday = day.wday %>
+          <div class="flex flex-col gap-1 items-center">
+            <!-- 日付 -->
+            <span class="<%= wday == 0 ? 'text-red-500' : wday == 6 ? 'text-blue-500' : 'text-gray-600' %> text-xs leading-none">
+              <%= day.day %>
+            </span>
+            <!-- 色マス -->
+            <div class="w-6 h-6 rounded-sm border border-gray-300"
+                 style="background-color:<%= activity_color_code(activity) %>"
+                 title="<%= day.strftime('%Y/%m/%d') %>">
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

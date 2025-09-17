@@ -2,6 +2,28 @@
     <div class="h-16 flex items-center justify-center font-bold">
         Skill Tree
     </div>
+
+    <% if @days_for_sidebar.blank? %>
+        <p class="text-gray-500">日付データがありません</p>
+    <% else %>
+        <div class="flex justify-center space-x-2 px-4 py-3 overflow-x-auto">
+            <% @days_for_sidebar.each do |day| %>
+            <% activity = @activities_by_date_for_sidebar[day] %>
+            <% wday = day.wday %>
+            <div class="flex flex-col gap-1 items-center min-h-8">
+                <span class="<%= wday == 0 ? 'text-red-500' : wday == 6 ? 'text-blue-500' : 'text-gray-700' %> text-xs">
+                    <%= day.day %>
+                </span>
+                <div
+                    class="w-6 h-6 rounded-sm border border-gray-300"
+                    style="background-color: <%= activity_color_code(activity) %>"
+                    title="<%= day.strftime('%Y/%m/%d') %>"
+                ></div>
+            </div>
+            <% end %>
+        </div>
+    <% end %>
+
     <div class="flex-1 overflow-y-auto">
         <%= turbo_frame_tag "done_list" do %>
             <%= render "tasks/done_list", done_tasks_by_date: @done_tasks_by_date %>

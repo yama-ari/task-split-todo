@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  date: 2025-09-04
+  morning_logged_in: false
+  evening_logged_in: false
+
+two:
+  user: two
+  date: 2025-09-04
+  morning_logged_in: false
+  evening_logged_in: false
